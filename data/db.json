@@ -123,6 +123,30 @@
       "back": "sfd",
       "deckId": 8,
       "id": 16
+    },
+    {
+      "front": "HELLO",
+      "back": "MOTTO",
+      "deckId": 6,
+      "id": 17
+    },
+    {
+      "front": "HI MISTER",
+      "back": "MARCUS AURELIUS",
+      "deckId": 6,
+      "id": 18
+    },
+    {
+      "front": "HEY MARCUS AURELIUS",
+      "back": "HELLLLD",
+      "deckId": 6,
+      "id": 19
+    },
+    {
+      "front": "SADF",
+      "back": "SDFA",
+      "deckId": 6,
+      "id": 20
     }
   ]
 }

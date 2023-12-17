@@ -14,7 +14,7 @@ export const Cards = ({ cards }) => {
     if (!result) {
      //await deletePost(id);
       // TODO: After the post is deleted, send the user to the home page.
-      history.push("/"); //dw added to send user to home page after post is deleted.
+      history.push(`/decks/${card.deckId}`); //dw added to send user to home page after post is deleted. //dw added to send user to home page after post is deleted.
     }else{
         setCount(0);
     }
