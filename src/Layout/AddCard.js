@@ -135,7 +135,7 @@ if(deck){
   )
       
   }
-  return (<div>HELLO WORLD</div>)
+  return (<div></div>)
 }
 
   
