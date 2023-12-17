@@ -5,7 +5,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import {useHistory } from "react-router-dom" //dw added
 
 import { readDeck, updateCard } from "../utils/api";
-import { createCard } from "../utils/api";
+
 import { createDeck } from "../utils/api";
 import { useState,useEffect } from "react";
 import ErrorMessage from "../common/ErrorMessage";
@@ -33,7 +33,7 @@ export const CreateDeck =( ) => {
 
 
 const handleRedirect=()=>{
-    history.push('/')
+    history.push('/');
 }
 
 
@@ -54,8 +54,10 @@ const handleRedirect=()=>{
     // Call the API to create the card with the abort signal
     try {
       await createDeck(deck, abortController.signal);
+      setDeck({});
+      history.push('/');
     } catch (error) {
-      setError(error);
+      return <ErrorMessage error={error} />;
     }
   };
 
@@ -67,31 +69,52 @@ const handleRedirect=()=>{
 
 return(
 
-  <div>
-  <h3>Create Deck</h3>
-    <form >
-    <label>Name
-    <input 
-      type="text" 
-      name="name" 
-      value={deck.name || ""} 
-      onChange={handleChange}
-       
-    />
-    </label>
-    <label> Description
-      <textarea 
-        type="text" 
-        name="description" 
-        value={deck.description || ""} 
-        onChange={handleChange}
-      />
-      </label>
-      <button onClick={handleSubmit}>Submit</button>
-      <button onClick={handleRedirect}>Cancel</button>
-  </form>
 
+  <form className="mt-4">
+  <h1 className="mb-4">Create Deck</h1>
+  
+
+  <div className="mb-3">
+    <label htmlFor="name" className="form-label">
+    Name
+    </label>
+    <textarea
+      id="name"
+      className="form-control"
+      name="name"
+      value={deck.name || ""}
+      onChange={handleChange}
+    />
   </div>
+
+  <div className="mb-3">
+    <label htmlFor="description" className="form-label">
+     Description
+    </label>
+    <textarea
+      id="description"
+      className="form-control"
+      name="description"
+      value={deck.description || ""}
+      onChange={handleChange}
+    />
+  </div>
+
+  <button
+    type="button"
+    className="btn btn-primary me-2"
+    onClick={handleSubmit}
+  >
+    Save
+  </button>
+  <button
+    type="button"
+    className="btn btn-secondary"
+    onClick={handleRedirect}
+  >
+    Done
+  </button>
+</form>
       );
 
       
@@ -101,3 +124,8 @@ return(
 
   
   export default CreateDeck;
+
+
+
+
+

@@ -22,7 +22,7 @@ export const Home = () => {
     listDecks(abortController.signal).then(setCardDecks).catch(setError);
 
     return () => abortController.abort();
-  }, [deck]);
+  }, []);
 
 
 
@@ -41,8 +41,8 @@ export const Home = () => {
 
       listDecks(undefined).then(setCardDecks).catch(setError);
       
-    } catch (Error) {
-      setError(Error);
+    } catch (error) {
+      return <ErrorMessage error={error}/>
     } finally {
       abortController.abort(); // Ensure proper cleanup
     }
@@ -54,7 +54,7 @@ export const Home = () => {
     return <ErrorMessage error={error}/>
   }
 
- // const list = cardDecks.map((deck) => <Deck key={deck.id} deck={deck} />);
+
 
 
   console.log(`${url}/decks/new`);

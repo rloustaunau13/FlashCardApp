@@ -12,22 +12,7 @@ import CreateDeck from "./CreateDeck";
 export const Decks = ({ decks  } ) => {
     const { path, url } = useRouteMatch(); //dw added
     const [deck, setDeck] = useState(undefined);
-    console.log(path);
-    console.log(url);
-    //const history  = useHistory();
-   /* const handleDelete = async () => {
-        const result = window.confirm("Are you sure you want to delete this post?");
-        if (result) {
-            let id=deck.id;
-          await deleteDeck(id);
-          // TODO: After the post is deleted, send the user to the home page.
-           // You need to implement/use a custom hook for forceUpdate
-           window.location.reload()
-          //window.location.reload();
-        }
-      };
 
-*/
      
 console.log(decks);
 

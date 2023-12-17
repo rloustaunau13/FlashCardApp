@@ -39,46 +39,22 @@ export const Study = () => {
             const res = await readDeck(deckId, abortController.signal);
             
 
-            console.log(res);
-            setCard(res);
 
+            setCard(res);
+            setDeck(res);
            
           } catch (error) {
-            setError(error);
+            return <ErrorMessage error={error} />;
           }
         };
       
         fetchCard();
       
         return () => abortController.abort();
-      }, [count]);
+      }, [count,deckId]);
     
 
-      useEffect(() => {
-        const abortController = new AbortController();
-      
-        const fetchDeck = async () => {
-          try {
-            const res = await readDeck(deckId, abortController.signal);
-            
-
-            console.log(res);
-            setDeck(res);
-
-           
-          } catch (error) {
-            setError(error);
-          }
-        };
-      
-        fetchDeck();
-      
-        return () => abortController.abort();
-      }, []);
-    
-      if (error) {
-        return <ErrorMessage error={error}/>
-      }
+     
 
 if(cards && cards.cards.length>2 &&  deck){
 

@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Route, useRouteMatch, Switch,Link} from "react-router-dom"
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {useHistory } from "react-router-dom" //dw added
-
+import ErrorMessage from "../common/ErrorMessage";
 import { readDeck, updateCard } from "../utils/api";
 import { createCard } from "../utils/api";
 import { updateDeck } from "../utils/api";
@@ -13,7 +13,7 @@ export const EditDeck =( ) => {
 
 
     const { deckId } = useParams(); // TODO: This ID will need to be pulled from parameters.
-    const { cardId } = useParams(); // TODO: This ID will need to be pulled from parameters.
+  
  console.log("ADD CARD");
 
  const [deck, setDeck] = useState(undefined);
@@ -60,7 +60,7 @@ export const EditDeck =( ) => {
     try {
       await updateDeck(deck, abortController.signal);
     } catch (error) {
-      console.error("Error creating card:", error);
+      return <ErrorMessage error={error}/>
     }
   };
 
@@ -78,7 +78,7 @@ export const EditDeck =( ) => {
 
        
       } catch (error) {
-        //setError(error);
+        return <ErrorMessage error={error}/>
       }
     };
   

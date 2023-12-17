@@ -30,7 +30,7 @@ export const VDeck = () => {
           await deleteDeck(deckId, abortController.signal);
           history.push(`/`);
         } catch (error) {
-          setError(error);
+          return <ErrorMessage error={error} />;
         } finally {
           abortController.abort(); // Ensure proper cleanup
         }
@@ -49,7 +49,7 @@ export const VDeck = () => {
 
            
           } catch (error) {
-            setError(error);
+            return <ErrorMessage error={error} />;
           }
         };
       
@@ -65,8 +65,8 @@ export const VDeck = () => {
     
 
       const trashCard = async (card) => {
-        //event.preventDefault();
-        const abortController = new AbortController();
+       
+
       
         try {
          
@@ -79,14 +79,13 @@ export const VDeck = () => {
           await deleteCard(card.id, abortController.signal);
           readDeck(deckId).then(setDeck);
         } catch (error) {
-          setError(error);
+          return <ErrorMessage error={error} />;
         } finally {
           abortController.abort(); // Ensure proper cleanup
         }
       };
 
 
-console.log(deck);
 
 
   if(deck){

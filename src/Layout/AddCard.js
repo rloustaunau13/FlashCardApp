@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Route, useRouteMatch, Switch,Link} from "react-router-dom"
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {useHistory } from "react-router-dom" //dw added
-
+import ErrorMessage from "../common/ErrorMessage";
 import { readDeck } from "../utils/api";
 import { createCard } from "../utils/api";
 import { useState,useEffect } from "react";
@@ -53,8 +53,9 @@ const { deckId } = useParams(); // TODO: This ID will need to be pulled from par
 
     try {
       await createCard(deckId, card, abortController.signal);
+      history.push(`/decks/${deckId}`); //dw added to send user to home page after post is deleted.
     } catch (error) {
-      setError(error);
+      return <ErrorMessage error={error} />;
     }
   };
 
@@ -63,19 +64,15 @@ const { deckId } = useParams(); // TODO: This ID will need to be pulled from par
 
 
  useEffect(() => {
-    const abortController = new AbortController();
   
     const fetchCard = async () => {
       try {
         const res = await readDeck(deckId, abortController.signal);
-        
-
-        console.log(res);
         setDeck(res);
 
        
       } catch (error) {
-        setError(error);
+        return <ErrorMessage error={error} />;
       }
     };
   
@@ -143,3 +140,7 @@ if(deck){
 
   
   export default AddCard;
+
+
+
+ 
