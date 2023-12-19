@@ -78,7 +78,7 @@ return(
     <label htmlFor="name" className="form-label">
     Name
     </label>
-    <textarea
+    <input
       id="name"
       className="form-control"
       name="name"

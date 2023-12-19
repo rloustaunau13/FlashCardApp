@@ -1,6 +1,5 @@
 import React, { Fragment } from "react"
-import { BrowserRouter as Router } from "react-router-dom";
-import { Route, useRouteMatch, Switch,Link} from "react-router-dom"
+import Form from "./Form";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {useHistory } from "react-router-dom" //dw added
 import ErrorMessage from "../common/ErrorMessage";
@@ -32,10 +31,6 @@ const { deckId } = useParams(); // TODO: This ID will need to be pulled from par
 
 
 
-  const handleRedirect = () => {
-
-    history.push(`/decks/${deckId}`); //dw added to send user to home page after post is deleted.
-  }
 
 
 
@@ -44,8 +39,8 @@ const { deckId } = useParams(); // TODO: This ID will need to be pulled from par
 
 
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (card) => {
+    
 
     // Log the updated card state
     console.log("Updated Card:", card);
@@ -87,51 +82,10 @@ console.log(deck);
 
 if(deck){
   return(
-  <form className="mt-4">
-  <h1 className="mb-4">Add Card</h1>
-  <h3 className="mb-3">{deck.name}</h3>
-
-  <div className="mb-3">
-    <label htmlFor="front" className="form-label">
-      Front
-    </label>
-    <textarea
-      id="front"
-      className="form-control"
-      name="front"
-      value={card.front || ""}
-      onChange={handleChange}
-    />
+    <div>
+    <h1>Add Card</h1>
+    <Form onSubmit={handleSubmit}  card={card} deck={deck} />
   </div>
-
-  <div className="mb-3">
-    <label htmlFor="back" className="form-label">
-      Back
-    </label>
-    <textarea
-      id="back"
-      className="form-control"
-      name="back"
-      value={card.back || ""}
-      onChange={handleChange}
-    />
-  </div>
-
-  <button
-    type="button"
-    className="btn btn-primary me-2"
-    onClick={handleSubmit}
-  >
-    Save
-  </button>
-  <button
-    type="button"
-    className="btn btn-secondary"
-    onClick={handleRedirect}
-  >
-    Done
-  </button>
-</form>
   )
       
   }
