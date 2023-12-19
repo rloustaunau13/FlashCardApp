@@ -1,10 +1,8 @@
 import React, { Fragment } from "react"
-import { BrowserRouter as Router } from "react-router-dom";
-import { Route, useRouteMatch, Switch,Link} from "react-router-dom"
+
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {useHistory } from "react-router-dom" //dw added
 
-import { readDeck, updateCard } from "../utils/api";
 
 import { createDeck } from "../utils/api";
 import { useState,useEffect } from "react";

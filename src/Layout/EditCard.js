@@ -3,9 +3,7 @@ import React, { Fragment } from "react"
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {useHistory } from "react-router-dom" //dw added
-import CardForm from "./CardForm";
 import { readDeck, updateCard } from "../utils/api";
-import { createCard } from "../utils/api";
 import { readCard } from "../utils/api";
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
