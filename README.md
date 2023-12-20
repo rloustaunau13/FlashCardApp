@@ -1,6 +1,4 @@
-Flash card app project  using HTML CSS JAVASCRIPT and React.
-Flashcard-App
-Alt text
+
 
 Functionality
 Create deck
